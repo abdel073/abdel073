@@ -19,6 +19,10 @@ systeme anglo-saxon (imperial/US) et le systeme metrique.
 | `torque`                 | N.m, ft.lb                                                    |
 | `energy`                 | J, kJ, BTU, kWh, cal                                          |
 | `pressure_gradient`      | Pa/m, kPa/m, bar/m, psi/ft                                    |
+| `gas_volume`             | m3, scf, Mscf, MMscf, Bcf                                     |
+| `gas_oil_ratio`          | m3/m3, scf/bbl (GOR)                                          |
+| `force`                  | N, lbf, kgf, daN, kN (ex : poids sur l'outil / WOB)            |
+| `permeability`           | m2, D (darcy), mD (millidarcy)                                |
 
 La densite API (degres API) est traitee a part car sa relation avec la
 gravite specifique (SG) n'est pas lineaire : `SG = 141.5 / (131.5 + API)`,
@@ -26,7 +30,7 @@ sur la base de la densite de l'eau a 60°F (999.0170125 kg/m3).
 
 ## Installation
 
-Aucune dependance externe requise (bibliotheque standard Python 3.10+).
+Aucune dependance externe requise (bibliotheque standard Python 3.8+).
 
 ```bash
 pip install -e .
@@ -79,6 +83,15 @@ convert("pressure_gradient", 1, "psi/ft", "kPa/m")
 
 # Densite API 39.6 (WTI) -> gravite specifique
 api_to_sg(39.6)  # ~0.827
+
+# GOR (Gas-Oil Ratio) : scf/bbl -> m3/m3
+convert("gas_oil_ratio", 600, "scf/bbl", "m3/m3")
+
+# Poids sur l'outil (WOB) : lbf -> kN
+convert("force", 30000, "lbf", "kN")
+
+# Permeabilite : darcy -> millidarcy
+convert("permeability", 1, "D", "mD")
 ```
 
 ## Tests
@@ -87,4 +100,4 @@ api_to_sg(39.6)  # ~0.827
 python -m pytest --cov=petroleum_units --cov-report=term-missing
 ```
 
-47 tests, 95%+ de couverture.
+56 tests, 95%+ de couverture.

@@ -2,7 +2,7 @@
 name = "petroleum-units"
 version = "0.1.0"
 description = "Convertisseur d'unites du domaine petrolier (anglo-saxon <-> metrique)"
-requires-python = ">=3.10"
+requires-python = ">=3.8"
 
 [project.scripts]
 petroleum-units = "petroleum_units.cli:main"
@@ -16,3 +16,14 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["petroleum_units"]
+
+[tool.pylint.main]
+ignored-modules = ["pytest"]
+
+[tool.pylint."messages control"]
+disable = [
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "duplicate-code",
+]
