@@ -1,0 +1,18 @@
+[project]
+name = "petroleum-units"
+version = "0.1.0"
+description = "Convertisseur d'unites du domaine petrolier (anglo-saxon <-> metrique)"
+requires-python = ">=3.10"
+
+[project.scripts]
+petroleum-units = "petroleum_units.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["petroleum_units"]
