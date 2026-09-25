@@ -13,6 +13,6 @@ def test_one_bar_in_kilopascal():
 
 def test_round_trip_psi_bar():
     original = 5000.0
-    bar = convert("pressure", original, "psi", "bar")
-    back = convert("pressure", bar, "bar", "psi")
+    bar_value = convert("pressure", original, "psi", "bar")
+    back = convert("pressure", bar_value, "bar", "psi")
     assert back == pytest.approx(original)
