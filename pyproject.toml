@@ -17,6 +17,9 @@ testpaths = ["tests"]
 [tool.coverage.run]
 source = ["petroleum_units"]
 
+[tool.pylint.main]
+ignored-modules = ["pytest"]
+
 [tool.pylint."messages control"]
 disable = [
     "missing-module-docstring",
